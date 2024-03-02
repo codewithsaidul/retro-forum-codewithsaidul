@@ -16,7 +16,7 @@ const displayData = (posts) => {
     allPost.forEach(post => {
         const newDiv = document.createElement('div');
         newDiv.classList.add('w-full', 'border', 'border-[#797DFC]', 'rounded-3xl', 'flex', 'flex-col', 'px-5', 'gap-5', 'sm:flex-row', '[bg-[#797DFC1A]]', 'p-10')
-        
+
 
         newDiv.innerHTML = `
             <div  class="flex justify-center sm:block indicator rounded-3xl">
@@ -74,7 +74,16 @@ const displayData = (posts) => {
         `
 
         
-
+        const indeicator = newDiv.querySelector(".indicator-item");
+        const status = post.isActive
+        
+        if (status) {
+            indeicator.classList.add('bg-[#10B981]');
+            indeicator.classList.remove('bg-[#FF3434]');
+        } else {
+            indeicator.classList.remove('bg-[#10B981]');
+            indeicator.classList.add('bg-[#FF3434]')
+        }
 
         postContainer.appendChild(newDiv)
     });

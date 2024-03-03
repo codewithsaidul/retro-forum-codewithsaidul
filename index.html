@@ -146,10 +146,10 @@
 
                             <!-- =============== Search Button ========================== -->
                             <div class="w-full bg-[#fff] flex justify-between p-3 rounded-[50px]">
-                                <input type="text"
+                                <input id="search-field" type="text"
                                     class="px-3 border-0 w-full outline-none text-base text-[#03071280] font-medium"
                                     placeholder="Search here anything">
-                                <button
+                                <button onclick="handleSearch()"
                                     class="bg-[#797DFC] py-2 px-6 rounded-[50px] text-xl font-bold title__font text-white">Search</button>
                             </div>
                         </div>
@@ -204,20 +204,16 @@
                         <h2 class="text-xl text-[#12132D] font-bold title__font">Title</h2>
                         <h2 class="text-base text-[#12132D99] font-normal">
                             <i class="fa-solid fa-check-double text-[#3DCE09]"></i>
-                            Mark as read (<span>4</span>)
+                            Mark as read (<span id="count-read">0</span>)
                         </h2>
                     </div>
 
                     <div class="mt-5">
-                        <div class="p-3 bg-white flex justify-between rounded-lg items-center">
-                            <div>
-                                <h2 class="text-base font-semibold text-[#12132D] w-full lg:w-[200px]">10 Kids Unaware of Their Halloween Costume</h2>
-                            </div>
-                            <div class="flex flex-col sm:flex-row">
-                                <h2><img src="./images/eye.png" alt=""></h2>
-                                <span>1566</span>
-                            </div>
-                        </div>
+
+                        <table id="my-table" class="p-3 w-full">
+                                
+                        </table>
+                        
                     </div>
                 </div>
             </div>

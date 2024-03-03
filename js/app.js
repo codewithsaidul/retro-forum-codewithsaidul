@@ -1,5 +1,5 @@
-const loadData = async () => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+const loadData = async (searchId='comedy') => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchId}`);
     const allPost = await res.json();
     displayData(allPost) 
     
@@ -33,9 +33,9 @@ const displayData = (posts) => {
                 </div>
 
                 <div class="space-y-3 border-b border-dashed pb-3 border-[#12132D40]">
-                    <h3 class="text-xl text-[#12132D] font-bold title__font">${post.title}</h3>
+                    <h3 class="text-xl my__title text-[#12132D] font-bold title__font">${post.title}</h3>
 
-                    <p class="text-base text-[#12132D99]">${post.description}</p>
+                    <p class="text-base text-[#12132D99] w-full md:w-[540px]">${post.description}</p>
                 </div>
 
                 <div class="flex justify-between">
@@ -66,9 +66,9 @@ const displayData = (posts) => {
                         </div>
                     </div>
 
-                    <h2>
-                        <img src="./images/email.png" alt="">
-                    </h2>
+                    <button type="submit" >
+                        <img onclick="markRead(' ${post.title}', ${post.view_count})" src="./images/email.png" alt="">
+                    </button>
                 </div>
             </div>
         `
@@ -90,6 +90,53 @@ const displayData = (posts) => {
 
 
 
+};
+
+
+let count = 0;
+const myTable = document.getElementById('my-table')
+const markRead = (title, eye) => {
+
+    
+
+    count = count + 1;
+
+    const countRead = document.getElementById('count-read');
+    countRead.innerText = count
+    
+   
+
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
+    const row = document.createElement('tr');
+
+    row.classList.add('p-3', 'bg-white', 'flex', 'justify-between', 'mb-5', 'rounded-lg', 'items-center', 'w-full')
+    td1.classList.add('text-base', 'font-semibold', 'text-[#12132D]', 'w-full', 'lg:w-[150px]')
+    td2.classList.add('flex', 'flex-row')
+
+
+    td1.innerText = title;
+    td2.innerHTML = `
+    <img src="./images/eye.png" alt="">
+    <span>${eye}</span>
+    `
+
+    row.appendChild(td1);
+    row.appendChild(td2)
+
+    console.log(row)
+
+    myTable.appendChild(row);
+}
+
+
+
+// Search Function
+const handleSearch = () => {
+    const searchField = document.getElementById("search-field");
+    const searchText = searchField.value;
+    loadData(searchText)
+    console.log(searchText)
 }
 
 loadData();

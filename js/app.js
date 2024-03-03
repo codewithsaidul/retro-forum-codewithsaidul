@@ -166,7 +166,7 @@ const displayLatestPost = (latests) => {
         }
 
         const latestDiv = document.createElement('div');
-        latestDiv.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-5', 'mt-10');
+        latestDiv.classList.add('h-auto');
 
 
         latestDiv.innerHTML = `

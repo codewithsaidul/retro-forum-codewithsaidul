@@ -156,6 +156,13 @@ const searchResult = (posts) => {
     postContainer.textContent = "";
 
     posts.posts.forEach(post => {
+
+        // Show Loading Spinner
+        loadingSpinner(true);
+
+
+        setTimeout(() => loadingSpinner(false), 2000)
+
         const newDiv = document.createElement('div');
         newDiv.classList.add('w-full', 'border', 'border-[#797DFC]', 'rounded-3xl', 'flex', 'flex-col', 'px-5', 'gap-5', 'sm:flex-row', '[bg-[#797DFC1A]]', 'p-10');
 
@@ -228,7 +235,8 @@ const searchResult = (posts) => {
         }
 
         postContainer.appendChild(newDiv)
-    })
+    });
+
 }
 
 // Latest Post 
@@ -289,6 +297,20 @@ const displayLatestPost = (latests) => {
 
         latestPostContainer.appendChild(latestDiv)
     })
+}
+
+
+// Loading Spinner Added When Searching Anything
+const loadingSpinner = isLoading => {
+    const spinner = document.getElementById('loading-spinner');
+
+    if (isLoading) {
+        spinner.classList.remove('hidden')
+    } else {
+        spinner.classList.add('hidden')
+    }
+
+    
 }
 
 
